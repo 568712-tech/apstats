@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survey</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f9f9f7;
+      color: #1a1a18;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 520px;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .step { width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .step.hidden { display: none; }
+
+    .emoji { font-size: 2.5rem; margin-bottom: 1.25rem; }
+
+    .headline {
+      font-size: 22px;
+      font-weight: 500;
+      color: #1a1a18;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .sub {
+      font-size: 15px;
+      color: #5f5e5a;
+      max-width: 400px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 12px 32px;
+      border-radius: 12px;
+      border: 1px solid #d3d1c7;
+      background: #ffffff;
+      color: #1a1a18;
+      cursor: pointer;
+      transition: background 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    button:hover { background: #f1efe8; }
+    button:active { transform: scale(0.98); }
+
+    .instructions-box {
+      background: #f1efe8;
+      border: 1px solid #d3d1c7;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 2rem;
+      font-size: 14px;
+      color: #5f5e5a;
+      line-height: 1.7;
+    }
+
+    .instructions-box strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: #1a1a18;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="step" id="step1">
+      <div class="emoji">📋</div>
+      <p class="headline">Would you take 5 minutes to fill out a short survey?</p>
+      <p class="sub">It would mean a lot to me — your response genuinely makes a difference and takes just a few minutes of your time.</p>
+      <button id="start-btn">Take the survey</button>
+    </div>
+
+    <div class="step hidden" id="step2">
+      <p class="headline">Before you begin</p>
+      <p class="sub">Please read through every question and all answer choices carefully before selecting your response.</p>
+      <div class="instructions-box">
+        <strong>Instructions</strong>
+        Take your time with each question. Read all options before choosing. There are no right or wrong answers — your honest response is what matters most.
+      </div>
+      <button id="go-btn">Go to survey <i class="ti ti-arrow-right"></i></button>
+    </div>
+
+  </div>
+
+  <script>
+    const links = [
+      "https://docs.google.com/forms/d/e/1FAIpQLScXceN9QepDtTVH6B_8Eb0UEVHmx0IImdmKSgBUuwe8-BkcnA/viewform",
+      "https://docs.google.com/forms/d/e/1FAIpQLSfcQjsfX1qNwboLJVSA71wzYkxW0QsHlzKHVWmLaL-uLoShnQ/viewform"
+    ];
+
+    const chosen = links[Math.floor(Math.random() * links.length)];
+
+    document.getElementById("start-btn").addEventListener("click", function () {
+      document.getElementById("step1").classList.add("hidden");
+      document.getElementById("step2").classList.remove("hidden");
+    });
+
+    document.getElementById("go-btn").addEventListener("click", function () {
+      window.open(chosen, "_blank");
+    });
+  </script>
+</body>
+</html>
